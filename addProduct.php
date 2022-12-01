@@ -49,7 +49,7 @@ $type->setType()
 
                             <div class="mb-3">
                                 <label for="name">Name</label>
-                                <input type="text" name="name" id="name" class="form-control" required>
+                                <input type="text" name="Name" id="name" class="form-control" required>
                                 <div class="invalid-feedback">
                                     Please, provide Name
                                 </div>
@@ -57,14 +57,14 @@ $type->setType()
 
                             <div class="mb-3">
                                 <label for="price">Price($)</label>
-                                <input type="text" name="price" id="price" class="form-control" required>
+                                <input type="number" name="Price" id="price" class="form-control" required>
                                 <div class="invalid-feedback">
                                     Please, provide Price
                                 </div>
                             </div>
 
                             <select class="form-select mb-3" id="productType" aria-label="Default select example" required>
-                                <option selected>Product Type</option>
+                                <option value="Default" selected>Product Type</option>
                                 <option value="DVD">DVD</option>
                                 <option value="Book">Book</option>
                                 <option value="Furniture">Furniture</option>
@@ -72,7 +72,7 @@ $type->setType()
 
                             <div class="mb-3 d-none" id="DVD">
                                 <label for="DVD">MB</label>
-                                <input type="text" name="DVD" id="size" class="form-control" required>
+                                <input type="number" name="DVD" id="size" class="form-control" required>
                                 <div class="invalid-feedback">
                                     Please, provide DVD size
                                 </div>
@@ -83,7 +83,7 @@ $type->setType()
 
                             <div class="mb-3 d-none" id="Book">
                                 <label for="Book">Weight</label>
-                                <input type="text" name="Book" id="weight" class="form-control" required>
+                                <input type="number" name="Value" id="weight" class="form-control" required>
                                 <div class="invalid-feedback">
                                     Please, provide Weight
                                 </div>
@@ -95,7 +95,7 @@ $type->setType()
 
                             <div class="mb-3 d-none" id="lengthDiv">
                                 <label for="Furniture">Length</label>
-                                <input type="text" name="Furniture1" id="length" class="form-control" required>
+                                <input type="number" name="Furniture1" id="length" class="form-control" required>
                                 <div class="invalid-feedback">
                                     Please, provide Length
                                 </div>
@@ -104,7 +104,7 @@ $type->setType()
 
                             <div class="mb-3 d-none" id="widthDiv">
                                 <label for="Furniture">Width</label>
-                                <input type="text" name="Furniture2" id="width" class="form-control" required>
+                                <input type="number" name="Furniture2" id="width" class="form-control" required>
                                 <div class="invalid-feedback">
                                     Please, provide Width
                                 </div>
@@ -113,7 +113,7 @@ $type->setType()
 
                             <div class="mb-3 d-none" id="heightDiv">
                                 <label for="Furniture">Height</label>
-                                <input type="text" name="Furniture3" id="height" class="form-control" required>
+                                <input type="number" name="Furniture3" id="height" class="form-control" required>
                                 <div class="invalid-feedback">
                                     Please, provide Height
                                 </div>

@@ -1,12 +1,13 @@
 <?php
 
-class Methods extends DBconnect
+class Methods extends Product
 {
+
     //fetch data
 
     public function getProduct()
     {
-        $query = "SELECT * FROM ecommerce.products";
+        $query = "SELECT * FROM ecommerce.products ORDER BY LENGTH(SKU), SKU";
         $result = $this->connect()->query($query);
         if ($result->rowCount() > 0) {
             while ($row = $result->fetch()) {
@@ -37,26 +38,8 @@ class Methods extends DBconnect
     {
 
         if (isset($_POST['type'])) {
-            switch ($_POST['type']) {
-                case 'DVD':
-                    $obj = new DVD($_POST);
-
-                    break;
-                case 'Book':
-                    $obj = new Book($_POST);
-
-                    break;
-
-                case 'Furniture':
-                    $obj = new Furniture($_POST);
-
-                    break;
-
-                default:
-
-                    break;
-            }
-
+            $type = $_POST['type'];
+            $obj = new $type($_POST);
             $obj->setProduct();
         }
     }
@@ -65,36 +48,19 @@ class Methods extends DBconnect
 
     public function displayProduct()
     {
-        $obj = new Methods($_POST);
 
-        $data = $obj->getProduct();
+        $data = $this->getProduct();
 
         if (isset($_POST['delete'])) {
             $deleteSKU = $_POST['delete'];
-            $obj->deleteProduct($deleteSKU);
+            $this->deleteProduct($deleteSKU);
         }
 
         if (isset($data)) {
             foreach ($data as $product) {
-                switch ($product['Type']) {
-                    case 'DVD':
-                        $type = 'Size';
-                        $unit = 'MB';
-                        break;
-                    case 'Book':
-                        $type = 'Weight';
-                        $unit = 'KG';
-                        break;
-                    case 'Furniture':
-                        $type = 'Dimensions';
-                        $unit = '';
-                        break;
-                    default:
-                        $unit = '';
-                        break;
-                }
 
-                ($product['Type']);
+                $field = $product['Type']::$field;
+                $unit = $product['Type']::$unit;
 
                 echo "<div class='card border-dark m-3 d-inline-block' style='width: 18rem;'>
                         <div class='card-header' id='SKU'> " .
@@ -106,7 +72,7 @@ class Methods extends DBconnect
                         <div class='card-body text-dark'>
                             <p class='card-text'>" .  $product['Name']  . "</p>
                             <p class='card-text'>Price: " .  $product['Price']  . " $</p>
-                            <p class='card-text'>" . $type . ' : ' .  $product['Value'] . $unit  . "</p>
+                            <p class='card-text'>" . $field . ' : ' .  $product['Value'] . $unit  . "</p>
 
                         </div>
                     </div>";
